@@ -1,0 +1,44 @@
+<form action="/robots" method="post">
+
+  <div class="col-md-4 col-md-offset-1">
+
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" class="form-control" name="robot[name]" id="name" value="<%= Faker::Name.first_name %>"/><br/>
+    </div>
+
+    <div class="form-group">
+      <label for="city">City:</label>
+      <input type="text" class="form-control" name="robot[city]" id="city" value="<%= Faker::Address.city %>"/><br/>
+    </div>
+
+    <div class="form-group">
+      <label for="state">State:</label>
+      <input type="text" class="form-control" name="robot[state]" id="state" value="<%= Faker::Address.state %>"/><br/>
+    </div>
+
+    <div class="form-group">
+      <label for="avatar">Avatar:</label>
+      <input type="text" class="form-control" name="robot[avatar]" id="avatar" value="<%= Faker::Avatar.image %>"/><br/>
+    </div>
+
+    <div class="form-group">
+      <label for="birthdate">Birthdate:</label>
+      <input type="text" class="form-control" name="robot[birthdate]" id="birthdate" value="<%= Faker::Date.backward(600) %>"/><br/>
+    </div>
+
+    <div class="form-group">
+      <label for="date_hired">Date Hired:</label>
+      <input type="text" class="form-control" name="robot[date_hired]" id="date_hired" value="<%= Faker::Date.backward(14) %>"/><br/>
+    </div>
+
+    <div class="form-group">
+      <label for="department">Department:</label>
+      <input type="text" class="form-control" name="robot[department]" id="department" value="<%= Faker::Team.creature %>"/><br/>
+    </div>
+
+    <input class="btn btn-primary" type="submit" value="Create This Robot!">
+
+  </div>
+
+</form>

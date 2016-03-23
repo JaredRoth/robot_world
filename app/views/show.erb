@@ -1,0 +1,23 @@
+<div class="row well">
+  <img class="col-md-offset-1 col-md-1" src="<%= @robot.avatar %>" alt="<%= @robot.name %>"/>
+  <h3 class="col-md-3"><%= @robot.name %></h3>
+
+  <a class="btn btn-primary col-md-1" href="/robots/<%=@robot.name%>/edit" role="button">Edit Robot</a>
+
+  <form class="col-md-1" action="/robots/<%=@robot.name%>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button class="btn btn-danger" type="submit">Remove Robot (but why?)</button>
+  </form>
+</div>
+
+<div class="row">
+  <p class="col-md-offset-1 col-md-6"><%= @robot.name %> is from <%= @robot.city %>, <%= @robot.state %>.</p>
+</div>
+
+<div class="row">
+  <p class="col-md-offset-1 col-md-6">He/she/it was born (assembled) on <%= @robot.birthdate %> and was hired on <%= @robot.date_hired %>.</p>
+</div>
+
+<div class="row">
+  <p class="col-md-offset-1 col-md-6">His/hers/its area of expertise is: <%= @robot.department %></p>
+</div>

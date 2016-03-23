@@ -1,0 +1,52 @@
+<div class="row">
+  <form action="/robots/<%= @robot.name %>" method="post">
+    <input type="hidden" name="_method" value="put">
+    <div class="col-md-6 col-md-offset-1">
+
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" name="robot[name]" id="name" value="<%= @robot.name %>"/><br/>
+      </div>
+
+      <div class="form-group">
+        <label for="city">City:</label>
+        <input type="text" class="form-control" name="robot[city]" id="city" value="<%= @robot.city %>"/><br/>
+      </div>
+
+      <div class="form-group">
+        <label for="state">State:</label>
+        <input type="text" class="form-control" name="robot[state]" id="state" value="<%= @robot.state %>"/><br/>
+      </div>
+
+      <div class="form-group">
+        <label for="avatar">Avatar:</label>
+        <input type="text" class="form-control" name="robot[avatar]" id="avatar" value="<%= @robot.avatar %>"/><br/>
+      </div>
+
+      <div class="form-group">
+        <label for="birthdate">Birthdate:</label>
+        <input type="text" class="form-control" name="robot[birthdate]" id="birthdate" value="<%= @robot.birthdate %>"/><br/>
+      </div>
+
+      <div class="form-group">
+        <label for="date_hired">Date Hired:</label>
+        <input type="text" class="form-control" name="robot[date_hired]" id="date_hired" value="<%= @robot.date_hired %>"/><br/>
+      </div>
+
+      <div class="form-group">
+        <label for="department">Department:</label>
+        <input type="text" class="form-control" name="robot[department]" id="department" value="<%= @robot.department %>"/><br/>
+      </div>
+
+      <!-- buttons -->
+      <input class="btn btn-success" type="submit" value="Save Changes">
+      <a class="btn btn-warning" href="/robots" role="button">Discard Changes</a>
+
+
+    </div>
+  </form>
+  <div class="col-md-3 col-md-offset-1">
+    <img src="<%= @robot.avatar %>"/>
+  </div>
+</div>
+<br>
