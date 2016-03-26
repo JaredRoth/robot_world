@@ -1,5 +1,4 @@
 require 'yaml/store'
-require_relative 'robot'
 
 class Robots
   attr_reader :database
@@ -9,52 +8,34 @@ class Robots
   end
 
   def create(robot)
-    database.transaction do
-      database['robots'] ||= []
-      database['robots'] << {"name" => robot[:name],
-                             "city" => robot[:city],
-                            "state" => robot[:state],
-                           "avatar" => robot[:avatar],
-                        "birthdate" => robot[:birthdate],
-                       "date_hired" => robot[:date_hired],
-                       "department" => robot[:department]}
-    end
-  end
-
-  def raw_robots
-    database.transaction do
-      database['robots'] || []
-    end
-  end
-
-  def raw_robot(name)
-    raw_robots.find {|robot| robot['name'] == name}
+    database.from(:robots).insert(robot)
   end
 
   def all
-    raw_robots.map {|data| Robot.new(data)}
+    database.from(:robots).map {|data| Robot.new(data)}
   end
 
-  def find(name)
-    Robot.new(raw_robot(name))
+  def find(id)
+    Robot.new(database.from(:robots).where(:id => id).to_a.first)
   end
 
-  def update(name, robot)
-    database.transaction do
-      target = database['robots'].find {|data| data["name"] == name}
-      target["name"]       = robot[:name]
-      target["city"]       = robot[:city]
-      target["state"]      = robot[:state]
-      target["avatar"]     = robot[:avatar]
-      target["birthdate"]  = robot[:birthdate]
-      target["date_hired"] = robot[:date_hired]
-      target["department"] = robot[:department]
-    end
+  def update(id, robot)
+    database.from(:robots).where(:id => id).update({
+      :name => robot[:name],
+      :city => robot[:city],
+      :state => robot[:state],
+      :avatar => robot[:avatar],
+      :birthdate => robot[:birthdate],
+      :date_hired => robot[:date_hired],
+      :department => robot[:department]
+    })
   end
 
-  def delete(name)
-    database.transaction do
-      database['robots'].delete_if {|robot| robot['name'] == name}
-    end
+  def destroy(name)
+    database.from(:robots).where(:id => id).delete
+  end
+
+  def delete_all
+    database.from(:robots).delete
   end
 end

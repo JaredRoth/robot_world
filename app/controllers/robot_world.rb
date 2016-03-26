@@ -1,5 +1,3 @@
-require 'models/robots'
-
 class RobotWorld < Sinatra::Base
   set :root, File.expand_path("..", __dir__)
   set :method_override, true
@@ -17,13 +15,13 @@ class RobotWorld < Sinatra::Base
     erb :new
   end
 
-  get '/robots/:name' do |name|
-    @robot = robots.find(name)
+  get '/robots/:id' do |id|
+    @robot = robots.find(id)
     erb :show
   end
 
-  get '/robots/:name/edit' do |name|
-    @robot = robots.find(name)
+  get '/robots/:id/edit' do |id|
+    @robot = robots.find(id)
     erb :edit
   end
 
@@ -32,18 +30,22 @@ class RobotWorld < Sinatra::Base
     redirect '/robots'
   end
 
-  put '/robots/:name' do |name|
-    robots.update(name, params[:robot])
-    redirect '/robots/'+name
+  put '/robots/:id' do |id|
+    robots.update(id, params[:robot])
+    redirect '/robots/'+id
   end
 
-  delete '/robots/:name' do |name|
-    robots.delete(name)
+  delete '/robots/:id' do |id|
+    robots.destroy(id)
     redirect '/robots'
   end
 
   def robots
-    database = YAML::Store.new('db/robot_world')
+    if ENV["RACK_ENV"] == "test"
+      database = Sequel.sqlite('db/robots_test.sqlite')
+    else
+      database = Sequel.sqlite('db/robots_development.sqlite')
+    end
     @robots ||= Robots.new(database)
   end
 end
