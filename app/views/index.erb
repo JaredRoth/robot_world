@@ -11,10 +11,10 @@
     <th class="text-center">Department</th>
   </tr>
   <% @robots.each do |robot| %>
-    <tr class="text-center">
-      <td><%= robot.id %></td>
-      <td class="col-md-1"><a href="/robots/<%=robot.name%>"><img src="<%= robot.avatar %>" alt="<%= robot.name %>" height="50" width="50" class="img-responsive center-block" alt="Responsive image"/></a></td>
-      <td><a href="/robots/<%=robot.name%>"><%= robot.name %></a></td>
+    <tr class="text-center robot">
+      <td><a href="/robots/<%=robot.id%>"><%= robot.id %></a></td>
+      <td class="col-md-1"><img src="<%= robot.avatar %>" alt="<%= robot.id %>" height="50" width="50" class="img-responsive center-block" alt="Responsive image"/></td>
+      <td><a href="/robots/<%=robot.id%>"><%= robot.name %></a></td>
       <td><%= robot.city %></td>
       <td><%= robot.state %></td>
       <td><%= robot.birthdate %></td>

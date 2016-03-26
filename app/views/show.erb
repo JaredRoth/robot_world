@@ -4,20 +4,14 @@
 
   <a class="btn btn-primary col-md-1" href="/robots/<%=@robot.name%>/edit" role="button">Edit Robot</a>
 
-  <form class="col-md-1" action="/robots/<%=@robot.name%>" method="post">
+  <form class="col-md-1" action="/robots/<%=@robot.id%>" method="post">
     <input type="hidden" name="_method" value="delete">
     <button class="btn btn-danger" type="submit">Remove Robot (but why?)</button>
   </form>
 </div>
 
-<div class="row">
-  <p class="col-md-offset-1 col-md-6"><%= @robot.name %> is from <%= @robot.city %>, <%= @robot.state %>.</p>
-</div>
+  <p class="col-md-offset-1 col-md-6"><%= @robot.name %> is from <%= @robot.city %>, <%= @robot.state %>.<br><br>
 
-<div class="row">
-  <p class="col-md-offset-1 col-md-6">He/she/it was robot number: @robot.id to be born/assembled (on <%= @robot.birthdate %>) and was hired on <%= @robot.date_hired %>.</p>
-</div>
+  He/she/it was robot number: <%= @robot.id %> to be born/assembled (which happened on <%= @robot.birthdate %>)<br>and was hired on <%= @robot.date_hired %>.<br><br>
 
-<div class="row">
-  <p class="col-md-offset-1 col-md-6">His/hers/its area of expertise is: <%= @robot.department %></p>
-</div>
+  His/hers/its area of expertise is: <%= @robot.department %></p>
