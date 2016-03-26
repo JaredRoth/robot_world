@@ -10,12 +10,12 @@ Capybara.app = RobotWorld
 
 module TestHelpers
   def setup
-    Robots.delete_all
+    robots.delete_all
     super
   end
 
   def teardown
-    Robots.delete_all
+    robots.delete_all
     super
   end
 
@@ -32,7 +32,7 @@ module TestHelpers
         :state => "#{i + 1} state",
         :birthdate => "Birthdate: #{i + 1}",
         :date_hired => "Date hired: #{i + 1}",
-        :department => "#{i + 1} description",
+        :department => "#{i + 1} department",
         :avatar => "https://robohash.org/abcd#{i + 1}",
         })
     end

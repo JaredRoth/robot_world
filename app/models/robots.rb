@@ -31,7 +31,7 @@ class Robots
     })
   end
 
-  def destroy(name)
+  def destroy(id)
     database.from(:robots).where(:id => id).delete
   end
 

@@ -1,6 +1,7 @@
 
 <table class="table table-striped table-bordered table-hover col-md-12">
   <tr>
+    <th class="text-center">ID</th>
     <th class="text-center">Avatar</th>
     <th class="text-center">Name</th>
     <th class="text-center">City</th>
@@ -11,6 +12,7 @@
   </tr>
   <% @robots.each do |robot| %>
     <tr class="text-center">
+      <td><%= robot.id %></td>
       <td class="col-md-1"><a href="/robots/<%=robot.name%>"><img src="<%= robot.avatar %>" alt="<%= robot.name %>" height="50" width="50" class="img-responsive center-block" alt="Responsive image"/></a></td>
       <td><a href="/robots/<%=robot.name%>"><%= robot.name %></a></td>
       <td><%= robot.city %></td>
