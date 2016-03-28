@@ -40,23 +40,25 @@ class Robots
   end
 
   def avg_age
-    count = 0
     database.from(:robots).map do |robot|
-      count += 1
       2016 - robot[:birthdate][-4..-1].to_i
-    end.reduce(:+)/count
+    end.reduce(:+)/all.count
+
+
   end
 
   def per_year(year)
     database.from(:robots).where(Sequel.like(:date_hired, "%#{year.to_s}")).to_a.count
   end
 
-  def in_category(cat)
-    self.all.each_with_object({}) do |robot, results|
-      if results.key?(robot.send(cat))
-        results[robot.send(cat)] += 1
+  def in_category(category)
+    # database.from(:robots).group_and_count(category)
+
+    all.each_with_object({}) do |robot, results|
+      if results.key?(robot.send(category))
+        results[robot.send(category)] += 1
       else
-        results[robot.send(cat)] = 1
+        results[robot.send(category)] = 1
       end
     end
   end

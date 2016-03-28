@@ -15,7 +15,7 @@ class RobotsTest < Minitest::Test
     assert_equal "https://robohash.org/abcd1", robot.avatar
   end
 
-  def test_it_returns_all_tasks
+  def test_it_returns_all_robots
     create_robots(3)
 
     all = robots.all
@@ -27,10 +27,12 @@ class RobotsTest < Minitest::Test
     assert_equal "3 name", all.last.name
   end
 
-  def test_it_finds_a_specific_task
-    create_robots(3)
+  def test_it_finds_a_specific_robot
+    create_robots(2)
 
-    robot = robots.all[-3]
+    all = robots.all
+
+    robot = robots.find(all.first.id)
     assert_equal "1 name", robot.name
     assert_equal "1 city", robot.city
     assert_equal "2/10/2000", robot.birthdate
@@ -38,24 +40,16 @@ class RobotsTest < Minitest::Test
     assert_equal "1 department", robot.department
     assert_equal "https://robohash.org/abcd1", robot.avatar
 
-    robot = robots.all[-2]
+    robot = robots.find(all.last.id)
     assert_equal "2 name", robot.name
     assert_equal "2 city", robot.city
     assert_equal "2/10/2001", robot.birthdate
     assert_equal "1/1/2007", robot.date_hired
     assert_equal "2 department", robot.department
     assert_equal "https://robohash.org/abcd2", robot.avatar
-
-    robot = robots.all.last
-    assert_equal "3 name", robot.name
-    assert_equal "3 city", robot.city
-    assert_equal "2/10/2002", robot.birthdate
-    assert_equal "1/1/2008", robot.date_hired
-    assert_equal "3 department", robot.department
-    assert_equal "https://robohash.org/abcd3", robot.avatar
   end
 
-  def test_it_updates_a_task
+  def test_it_updates_a_robot
     create_robots(1)
 
     before = robots.all.last
@@ -84,7 +78,7 @@ class RobotsTest < Minitest::Test
     assert_equal "https://robohash.org/12345", after.avatar
   end
 
-  def test_it_destroys_a_task
+  def test_it_destroys_a_robot
     create_robots(3)
 
     all = robots.all
