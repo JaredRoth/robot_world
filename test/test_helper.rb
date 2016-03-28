@@ -30,11 +30,63 @@ module TestHelpers
         :name => "#{i + 1} name",
         :city => "#{i + 1} city",
         :state => "#{i + 1} state",
-        :birthdate => "Birthdate: #{i + 1}",
-        :date_hired => "Date hired: #{i + 1}",
+        :birthdate => "2/10/#{2000 + i}",
+        :date_hired => "1/1/#{2006 + i}",
         :department => "#{i + 1} department",
         :avatar => "https://robohash.org/abcd#{i + 1}",
         })
     end
+  end
+
+  def create_analysis_robots
+    robots.create({
+      :name => "First name",
+      :city => "First city",
+      :state => "First state",
+      :birthdate => "2/10/2000",
+      :date_hired => "1/1/2004}",
+      :department => "First department",
+      :avatar => "https://robohash.org/abcd",
+      })
+
+    robots.create({
+      :name => "Second name",
+      :city => "Second city",
+      :state => "First state",
+      :birthdate => "2/10/2000",
+      :date_hired => "1/1/2005}",
+      :department => "First department",
+      :avatar => "https://robohash.org/abcd",
+      })
+
+    robots.create({
+      :name => "Third name",
+      :city => "Second city",
+      :state => "First state",
+      :birthdate => "2/10/2002",
+      :date_hired => "1/1/2006}",
+      :department => "Second department",
+      :avatar => "https://robohash.org/abcd",
+      })
+
+    robots.create({
+      :name => "Fourth name",
+      :city => "Second city",
+      :state => "Second state",
+      :birthdate => "2/10/2004",
+      :date_hired => "1/1/2007}",
+      :department => "Second department",
+      :avatar => "https://robohash.org/abcd",
+      })
+
+    robots.create({
+      :name => "Fifth name",
+      :city => "First city",
+      :state => "Third state",
+      :birthdate => "2/10/2004",
+      :date_hired => "1/1/2008}",
+      :department => "Third department",
+      :avatar => "https://robohash.org/abcd",
+      })
   end
 end

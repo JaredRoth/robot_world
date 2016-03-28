@@ -9,8 +9,8 @@ class RobotsTest < Minitest::Test
     assert_equal "1 name", robot.name
     assert_equal "1 city", robot.city
     assert_equal "1 state", robot.state
-    assert_equal "Birthdate: 1", robot.birthdate
-    assert_equal "Date hired: 1", robot.date_hired
+    assert_equal "2/10/2000", robot.birthdate
+    assert_equal "1/1/2006", robot.date_hired
     assert_equal "1 department", robot.department
     assert_equal "https://robohash.org/abcd1", robot.avatar
   end
@@ -33,24 +33,24 @@ class RobotsTest < Minitest::Test
     robot = robots.all[-3]
     assert_equal "1 name", robot.name
     assert_equal "1 city", robot.city
-    assert_equal "Birthdate: 1", robot.birthdate
-    assert_equal "Date hired: 1", robot.date_hired
+    assert_equal "2/10/2000", robot.birthdate
+    assert_equal "1/1/2006", robot.date_hired
     assert_equal "1 department", robot.department
     assert_equal "https://robohash.org/abcd1", robot.avatar
 
     robot = robots.all[-2]
     assert_equal "2 name", robot.name
     assert_equal "2 city", robot.city
-    assert_equal "Birthdate: 2", robot.birthdate
-    assert_equal "Date hired: 2", robot.date_hired
+    assert_equal "2/10/2001", robot.birthdate
+    assert_equal "1/1/2007", robot.date_hired
     assert_equal "2 department", robot.department
     assert_equal "https://robohash.org/abcd2", robot.avatar
 
     robot = robots.all.last
     assert_equal "3 name", robot.name
     assert_equal "3 city", robot.city
-    assert_equal "Birthdate: 3", robot.birthdate
-    assert_equal "Date hired: 3", robot.date_hired
+    assert_equal "2/10/2002", robot.birthdate
+    assert_equal "1/1/2008", robot.date_hired
     assert_equal "3 department", robot.department
     assert_equal "https://robohash.org/abcd3", robot.avatar
   end
@@ -61,8 +61,8 @@ class RobotsTest < Minitest::Test
     before = robots.all.last
     assert_equal "1 name", before.name
     assert_equal "1 city", before.city
-    assert_equal "Birthdate: 1", before.birthdate
-    assert_equal "Date hired: 1", before.date_hired
+    assert_equal "2/10/2000", before.birthdate
+    assert_equal "1/1/2006", before.date_hired
     assert_equal "1 department", before.department
     assert_equal "https://robohash.org/abcd1", before.avatar
 
@@ -98,6 +98,23 @@ class RobotsTest < Minitest::Test
     assert_equal 2, all.length
     assert all.any?{|robot| robot.name == "3 name"}
     refute all.any?{|robot| robot.name == "2 name"}
+  end
 
+  def test_it_calculates_average_age_correctly
+    create_analysis_robots
+
+    assert_equal 14.0, robots.avg_age
+  end
+
+  def test_it_groups_robots_correctly
+    create_analysis_robots
+
+    dept  = robots.robots_in(:department)
+    city  = robots.robots_in(:city)
+    state = robots.robots_in(:state)
+
+    assert_equal , robots.robots_in(:department)
+    assert_equal , robots.robots_in(:city)
+    assert_equal , robots.robots_in(:state)
   end
 end

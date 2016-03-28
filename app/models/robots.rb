@@ -1,4 +1,4 @@
-require 'yaml/store'
+require "date"
 
 class Robots
   attr_reader :database
@@ -37,5 +37,21 @@ class Robots
 
   def delete_all
     database.from(:robots).delete
+  end
+
+  def avg_age
+    count = 0
+    database.from(:robots).map do |robot|
+      count += 1
+      2016 - robot[:birthdate][-4..-1].to_i
+    end.reduce(:+)/count
+  end
+
+  def robots_per_year
+
+  end
+
+  def robots_in(category)
+    
   end
 end

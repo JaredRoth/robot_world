@@ -11,7 +11,7 @@ class UserCanCreateANewRobot < Minitest::Test
     fill_in 'robot[city]', with: 'Example City'
     fill_in 'robot[state]', with: 'Example State'
     fill_in 'robot[birthdate]', with: 'Example Birthdate'
-    fill_in 'robot[date_hired]', with: '10/10/10'
+    fill_in 'robot[date_hired]', with: '2/10/10'
     fill_in 'robot[department]', with: 'Bees'
     fill_in 'robot[avatar]', with: 'https://robohash.org/abcd'
     click_button 'Create This Robot'

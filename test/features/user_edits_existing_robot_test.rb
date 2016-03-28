@@ -13,7 +13,7 @@ class UserCanEditAnExistingRobot < Minitest::Test
     fill_in 'robot[city]', with: 'Updated City'
     fill_in 'robot[state]', with: 'Updated State'
     fill_in 'robot[birthdate]', with: 'Updated Birthdate'
-    fill_in 'robot[date_hired]', with: '10/10/11'
+    fill_in 'robot[date_hired]', with: '2/10/11'
     fill_in 'robot[department]', with: 'Bison'
     fill_in 'robot[avatar]', with: 'https://robohash.org/123'
     click_button 'Save Changes'
