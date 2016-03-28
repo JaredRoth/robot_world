@@ -47,11 +47,18 @@ class Robots
     end.reduce(:+)/count
   end
 
-  def robots_per_year
-
+  def per_year(year)
+    database.from(:robots).where(Sequel.like(:date_hired, "%#{year.to_s}")).to_a.count
   end
 
-  def robots_in(category)
-    
+  def in_category(cat)
+    category = {:department => robot.department,
+                :city       => robot.city,
+                :state      => robot.state}
+    results = {}
+
+    self.all.each do |robot|
+      results[category] += 1
+    end
   end
 end

@@ -44,7 +44,7 @@ module TestHelpers
       :city => "First city",
       :state => "First state",
       :birthdate => "2/10/2000",
-      :date_hired => "1/1/2004}",
+      :date_hired => "1/1/2004",
       :department => "First department",
       :avatar => "https://robohash.org/abcd",
       })
@@ -54,7 +54,7 @@ module TestHelpers
       :city => "Second city",
       :state => "First state",
       :birthdate => "2/10/2000",
-      :date_hired => "1/1/2005}",
+      :date_hired => "1/1/2005",
       :department => "First department",
       :avatar => "https://robohash.org/abcd",
       })
@@ -64,7 +64,7 @@ module TestHelpers
       :city => "Second city",
       :state => "First state",
       :birthdate => "2/10/2002",
-      :date_hired => "1/1/2006}",
+      :date_hired => "1/1/2006",
       :department => "Second department",
       :avatar => "https://robohash.org/abcd",
       })
@@ -74,7 +74,7 @@ module TestHelpers
       :city => "Second city",
       :state => "Second state",
       :birthdate => "2/10/2004",
-      :date_hired => "1/1/2007}",
+      :date_hired => "1/1/2007",
       :department => "Second department",
       :avatar => "https://robohash.org/abcd",
       })
@@ -84,7 +84,7 @@ module TestHelpers
       :city => "First city",
       :state => "Third state",
       :birthdate => "2/10/2004",
-      :date_hired => "1/1/2008}",
+      :date_hired => "1/1/2007",
       :department => "Third department",
       :avatar => "https://robohash.org/abcd",
       })
