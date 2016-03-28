@@ -116,17 +116,17 @@ class RobotsTest < Minitest::Test
   def test_it_groups_robots_correctly
     create_analysis_robots
 
-    dept  = robots.in_category(:department)
-    city  = robots.in_category(:city)
-    state = robots.in_category(:state)
+    city  = robots.in_category("city")
+    state = robots.in_category("state")
+    dept  = robots.in_category("department")
 
-    assert_equal 2, dept["First department"]
-    assert_equal 1, dept["Third department"]
-
-    assert_equal 1, city["First city"]
+    assert_equal 2, city["First city"]
     assert_equal 3, city["Second city"]
 
     assert_equal 3, state["First state"]
     assert_equal 1, state["Third state"]
+
+    assert_equal 2, dept["First department"]
+    assert_equal 1, dept["Third department"]
   end
 end

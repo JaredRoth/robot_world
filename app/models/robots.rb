@@ -52,13 +52,12 @@ class Robots
   end
 
   def in_category(cat)
-    category = {:department => robot.department,
-                :city       => robot.city,
-                :state      => robot.state}
-    results = {}
-
-    self.all.each do |robot|
-      results[category] += 1
+    self.all.each_with_object({}) do |robot, results|
+      if results.key?(robot.send(cat))
+        results[robot.send(cat)] += 1
+      else
+        results[robot.send(cat)] = 1
+      end
     end
   end
 end
